@@ -1,0 +1,258 @@
+\documentclass[a4paper,12pt]{article}
+
+% Подключение необходимых пакетов
+\usepackage[left=30mm,right=10mm,top=2cm,bottom=2cm]{geometry} % Поля 
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{mathtext}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{graphicx}
+\usepackage{tabularx} % Пакет для таблиц с автоматической шириной столбцов
+
+\usepackage{setspace} % Межстрочные интервалы
+\usepackage{indentfirst} % Отступ у первого абзаца
+\usepackage{titlesec} % Настройка заголовков
+\usepackage{csquotes} % Для цитат
+\usepackage{hyperref} % Для гиперссылок
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xypic}
+\usepackage{tikz}
+
+\usepackage{listings}
+\lstset{inputencoding=utf8x, extendedchars=\true}
+
+% Define a custom color
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+
+% Define a custom style
+\lstdefinestyle{myStyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	keepspaces=true,                 
+	numbers=left,       
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2,
+	basicstyle=\footnotesize\ttfamily,
+	keywordstyle=\bfseries\color{green!40!black},
+	commentstyle=\itshape\color{purple!40!black},
+	identifierstyle=\color{blue},
+	backgroundcolor=\color{gray!10!white},
+}
+
+% Use \lstset to make myStyle the global default
+\lstset{style=myStyle}
+
+
+\usetikzlibrary{positioning}
+
+% Форматирование заголовков разделов
+\titleformat{\section}{\bfseries\fontsize{14pt}{14pt}\selectfont}{\thesection.}{1em}{}
+\titlespacing{\section}{0pt}{6pt}{6pt}
+
+% Настройка абзацев
+\setlength{\parindent}{1.25cm} % Абзацный отступ
+\setlength{\parskip}{6pt} % Интервал между абзацами
+
+% Оформление цитат
+\newenvironment{quoteformat}{\bfseries}{}
+
+
+%opening
+\title{\textbf{Контрольное мероприятие №3} \\
+	Контрольная работа по микроэкономике }
+\author{Галиулин Ринат Рамильевич, КЭз-391}
+\date{}
+
+\begin{document}
+	\begin{titlepage}
+		\begin{center}
+			% Шапка
+			{\large \textbf{Министерство науки и высшего образования \\ Российской Федерации}}
+			
+			{\large\textbf{Федеральное государственное автономное образовательное учреждение высшего образования}}
+			
+			{\large \textbf{«Южно-Уральский государственный университет (НИУ)»}}
+			
+			{\large \textbf{Высшая школа электроники и компьютерных наук}}
+			
+			{\large \textbf{Кафедра системного программирования}\\[2cm]
+			}
+			% Тип работы
+			\textbf{ОТЧЕТ}\\[0.2cm]
+			о выполнении практического задания №3\\[0.2cm]
+			по дисциплине\\[0.2cm]
+			«Структуры и алгоритмы обработки данных»\\[0.2cm]
+			\textbf{Вариант 5}\\[3cm]
+		\end{center}
+		
+		\begin{flushright}
+			Проверил:\\[0.2cm]
+			ст. преподаватель кафедры СП\\[0.2cm]
+			\textbf{Петрова Л.Н.}\\[1cm]
+						
+			Выполнил:\\[0.2cm]
+			Студент группы КЭз-391\\[0.2cm]
+			\textbf{Галиулин Р.Р.}\\[0.2cm]
+			
+		\end{flushright}
+		\vfill{}
+		
+		\begin{center}
+			Челябинск \\ 2025
+		\end{center}
+	\end{titlepage}
+	\newpage
+	
+	\tableofcontents
+	
+	\setcounter{page}{2}
+	\newpage
+	%\maketitle
+	\section{Описание задачи}
+	\textbf{Задание №1: Множество}
+	
+	Составить программу подсчёта общего количества цифр и знаков «+»,«-»,«*» 
+	в строкe, введённой с клавиатуры.
+	
+	\textbf{Входные данные}
+	
+	\begin{itemize}
+		\item Строка, содержащая число-буквенные символы
+	\end{itemize}
+	
+	\textit{Все данные вводятся с помощью стандартного потока вывода.}		
+
+	\textbf{Выходные данные}
+
+	\begin{itemize}
+		\item Количество символов «+»,«-»,«*» и цифр выведенных во входной строке. Целое положительное число или ноль.
+	\end{itemize}
+
+	\textit{Все данные вводятся с помощью стандартного потока вывода.}		
+
+		
+	\textbf{Задание №2: Очередь}
+	
+	Дана очередь вещественных чисел. Удалить из очереди числа из заданного 
+	пользователем диапазона.
+
+	\textbf{Входные данные}
+
+	\begin{itemize}
+		\item Очередь вещественных чисел
+		\item Нижняя граница диапазона, вещественное число
+		\item Верхняя граница диапазона, вещественное число 
+	\end{itemize}
+
+	\textit{Все данные вводятся с помощью стандартного потока вывода.}		
+
+	\textbf{Выходные данные}
+
+	\begin{itemize}
+		\item Очередь вещественных чисел
+	\end{itemize}
+
+	\textit{Все данные вводятся с помощью стандартного потока вывода.}		
+	
+	\newpage	
+	\section{Листинги программ}
+	Язык программирования: C++ 14. Среда разработки: Ubuntu 24.10, gcc 14.2.0, nvim
+	\lstinputlisting[caption=Задание 1: Множество,label={lst:listing-cpp}, language=C++, firstline=1]{app5.cpp}
+	
+	\lstinputlisting[caption=Задание 2: Очередь,label={lst:listing-cpp}, language=C++]{app6.cpp}
+	
+	\newpage
+	\section{Контрольные тесты}
+	
+	\renewcommand{\arraystretch}{1.5} % Увеличиваем высоту строк
+	\subsection{Задание №1: Множества}
+	\begin{table}[ht]
+		
+		\centering
+		\begin{tabularx}{\textwidth}{|X|X|}
+			\hline
+			\textbf{Исходные данные} & \textbf{Результат} \\ \hline
+			A+4+5+6dfg56+-H41k12 & 14 \\ \hline
+			0123456789g & 10 \\ \hline
+			1gfhgjhg5 & 2 \\ \hline
+			fhghjgj2hfhgjhg & 1 \\ \hline			
+		\end{tabularx}
+		\caption{Таблица с результатами контрольных тестов Задания №1}
+	\end{table}
+	
+	\renewcommand{\arraystretch}{1.5} % Увеличиваем высоту строк
+	\subsection{Задание №3: Очередь}
+	\begin{table}[ht]
+		
+		\centering
+		\begin{tabularx}{\textwidth}{|X|X|}
+			\hline
+			\textbf{Исходные данные} & \textbf{Результат} \\ \hline
+			12 0 12 01 45 2 3 \newline 12 \newline 12 
+			& 0 1 45 2 3 \\ \hline
+			1 2 3 4 5 6 7 8 9 0 \newline 0 \newline 4 
+			& 5 6 7 8 9 \\ \hline
+			4 4 2 2 3 3 5 5 6 6 1 1 \newline 1 \newline 2
+			& 4 4 3 3 5 5 6 6 \\ \hline		
+		\end{tabularx}
+		\caption{Таблица с результатами контрольных тестов Задания №2}
+	\end{table}
+	
+	\newpage
+	\section{Контрольные вопросы}
+	\subsection{Дайте определение очереди}
+	
+	В отличии от стека очередь реализует принцип FIFO - первым пришёл, первым вышел, т.е. элементы добавляются в конец очереди, а извлекаются из начала. 
+	
+	\subsection{Где применяется очередь?}
+	
+	Где логически применим принцип FIFO. Например при буферизации данных используется в качестве временного хранилища данных поступающих с разной скоростью. Управлении задачами, когда важно выполнять все по очереди, например очередь печати принтера, очереди сообщений в операционных системах, обработка запросов к серверу, моделирование процессов В ряде алгоритмов работы с более сложными структурами данных, например графами.
+	
+	\subsection{Перечислите основные операции применяемые в очереди.}
+	
+	Основными операциями являются:
+	
+	\begin{itemize}
+		\item \textbf{Push} - добавление элемента в конец
+		\item \textbf{Pop} - извлечение элемента с начала
+	\end{itemize}
+	
+	Также существуют, но не во всех реализациях, дополнительные операции:
+	
+	\begin{itemize}
+		\item \textbf{Top} (или Peek) - просмотр начального элемента без извлечения
+		\item Проверка на пустоту, наличия хотя-бы одного элемента.
+		\item \textbf{Size} - размер стека
+	\end{itemize}
+	
+	\subsection{Что такое множество?}
+	
+	В качестве структуры данных, являются отражением математического понятия, как неупорядоченную коллекцию различных элементов. Ключевым является что элементы - различны, т.е. множество не содержит в себе дубликаты.   
+	
+	\subsection{Дайте определение мощности множества.}
+	
+	Кол-во \textbf{различных} элементов множества. Если множество реализуется с соблюдением принципа различности элементов, то просто кол-во элементов множества.
+	
+	\subsection{Какие операции можно применять к множествам?}
+	
+	\begin{itemize}
+		\item Добавление элемента в множество
+		\item Удаление элемента из множества 
+		\item Проверка на принадлежность некого значения множеству
+		\item Объединение (аналог $Q \cup W$) - создание нового множества состоящего из элементов множеств подлежащих объединению (в std::set set\_union)
+		\item Пересечение (аналог $Q \cap W$) - создание нового множества состоящих из элементов принадлежащих (состоящих) в множествах подлежащих пересечению (в std::set set\_intersection)
+		\item Разность множеств (аналог $Q$-$W$) - создание нового множества элементы которого принадлежат Q но не принадлежат W (в std::set set\_difference)
+		\item Проверка на подмножество (аналог $Q \subset W$) - логическая операция возвращающая истину если все элементы множества Q также содержаться в множестве W
+	\end{itemize}
+	
+	
+\end{document}

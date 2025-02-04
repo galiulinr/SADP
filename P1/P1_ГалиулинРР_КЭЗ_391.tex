@@ -1,0 +1,305 @@
+\documentclass[a4paper,12pt]{article}
+
+% Подключение необходимых пакетов
+\usepackage[left=30mm,right=10mm,top=2cm,bottom=2cm]{geometry} % Поля 
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{mathtext}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{graphicx}
+
+\usepackage{setspace} % Межстрочные интервалы
+\usepackage{indentfirst} % Отступ у первого абзаца
+\usepackage{titlesec} % Настройка заголовков
+\usepackage{csquotes} % Для цитат
+\usepackage{hyperref} % Для гиперссылок
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xypic}
+\usepackage{tikz}
+\usepackage{tabularx} % Пакет для таблиц с автоматической шириной столбцов
+
+\usepackage{listings}
+\lstset{inputencoding=utf8x, extendedchars=\true}
+
+% Define a custom color
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+
+% Define a custom style
+\lstdefinestyle{myStyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	keepspaces=true,                 
+	numbers=left,       
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2,
+	basicstyle=\footnotesize\ttfamily,
+	keywordstyle=\bfseries\color{green!40!black},
+	commentstyle=\itshape\color{purple!40!black},
+	identifierstyle=\color{blue},
+	backgroundcolor=\color{gray!10!white},
+}
+
+% Use \lstset to make myStyle the global default
+\lstset{style=myStyle}
+
+
+\usetikzlibrary{positioning}
+
+% Форматирование заголовков разделов
+\titleformat{\section}{\bfseries\fontsize{14pt}{14pt}\selectfont}{\thesection.}{1em}{}
+\titlespacing{\section}{0pt}{6pt}{6pt}
+
+% Настройка абзацев
+\setlength{\parindent}{1.25cm} % Абзацный отступ
+\setlength{\parskip}{6pt} % Интервал между абзацами
+
+% Оформление цитат
+\newenvironment{quoteformat}{\bfseries}{}
+
+\begin{document}
+	\begin{titlepage}
+		\begin{center}
+			% Шапка
+			{\large \textbf{Министерство науки и высшего образования \\ Российской Федерации}}
+			
+			{\large\textbf{Федеральное государственное автономное образовательное учреждение высшего образования}}
+			
+			{\large \textbf{«Южно-Уральский государственный университет (НИУ)»}}
+			
+			{\large \textbf{Высшая школа электроники и компьютерных наук}}
+			
+			{\large \textbf{Кафедра системного программирования}\\[2cm]
+			}
+			% Тип работы
+			\textbf{ОТЧЕТ}\\[0.2cm]
+			о выполнении практического задания №1\\[0.2cm]
+			по дисциплине\\[0.2cm]
+			«Структуры и алгоритмы обработки данных»\\[0.2cm]
+			\textbf{Вариант 5}\\[3cm]
+		\end{center}
+		
+		\begin{flushright}
+			Проверил:\\[0.2cm]
+			ст. преподаватель кафедры СП\\[0.2cm]
+			\textbf{Петрова Л.Н.}\\[1cm]
+						
+			Выполнил:\\[0.2cm]
+			Студент группы КЭз-391\\[0.2cm]
+			\textbf{Галиулин Р.Р.}\\[0.2cm]
+			
+		\end{flushright}
+		\vfill{}
+		
+		\begin{center}
+			Челябинск \\ 2025
+		\end{center}
+	\end{titlepage}
+	\newpage
+	
+	\tableofcontents
+	
+	\setcounter{page}{2}
+	\newpage
+	%\maketitle
+	\section{Описание задачи}
+	\textbf{Задание №1: Массив}
+	
+	Дан одномерный целочисленный массив порядка N. Найдите сумму положительных элементов массива, стоящих между первым и последним отрицательными элементами. 
+	Если таких элементов нет, вернуть значение 0.
+	
+	\textbf{Входные данные:}
+	
+	Размер массива N - целое положительное число больше нуля $N\in\mathbb{N}$
+	
+	Массив $Z (Z_{0}...Z_{i}...Z_{N-1})$- состоящий из целых чисел $Z_{i}\in\mathbb{Z}$
+	
+	\textit{Все данные выводятся с помощью стандартного потока вывода.}
+	
+	\textbf{Выходные данные:}
+	
+	R - целое положительное число $R\in\mathbb{N}$ или 0 
+	
+	\textit{Данные вводятся с помощью стандартного потока ввода.}
+	
+	\textbf{Задание №2: Строка}
+	
+	Отфильтровать из строки числа
+	Вводится строка, содержащая буквы, целые неотрицательные числа и иные символы. Требуется все числа, которые встречаются в строке, поместить в отдельный целочисленный массив. Например, если дана строка «data 48 call 9 read13 blank0a», то в массиве должны оказаться числа 48, 9, 13 и 0.
+	
+	\textbf{Входные данные:}
+	
+	Строка символов, содержащая буквы, целые неотрицательные числа и иные символы
+	
+	\textit{Все данные выводятся с помощью стандартного потока вывода.}
+	
+	\textbf{Выходные данные:}
+	
+	Массив целых неотрицательных чисел
+	
+	\textit{Данные вводятся с помощью стандартного потока ввода.}
+	
+	\newpage
+	\section{Листинги программ}
+	Язык программирования: C++ 14. Среда разработки: Ubuntu 24.10 (6.11.0-13), gcc 14.2.0, neovim
+	\lstinputlisting[caption=Задание 1: Массив,label={lst:listing-cpp}, language=C++, firstline=1]{app1.cpp}
+	
+	\lstinputlisting[caption=Задание 2: Строка,label={lst:listing-cpp}, language=C++]{app2.cpp}
+	
+	\newpage
+	\section{Контрольные тесты}
+	
+	
+	\subsection{Задание №1: Массив}
+	\begin{table}[ht]
+		\centering
+		\begin{tabularx}{\textwidth}{|X|X|}
+			\hline
+			\textbf{Исходные данные} & \textbf{Результат} \\ \hline
+			5 \newline -1  3  5  -4  2   & 8    \\ \hline
+			5 \newline  1  2  3  4  5     & 0    \\ \hline
+			5 \newline -5 -6  3  4  5     & 0    \\ \hline
+		\end{tabularx}
+		\caption{Таблица с результатами контрольных тестов Задания №1}
+	\end{table}
+	
+	\renewcommand{\arraystretch}{1.5} % Увеличиваем высоту строк
+	\subsection{Задание №2: Строка}
+	\begin{table}[ht]
+		
+		\centering
+		\begin{tabularx}{\textwidth}{|X|X|}
+			\hline
+			\textbf{Исходные данные} & \textbf{Результат} \\ \hline
+			data 48 call 9 read13 blank0a  & 48  9  13  0    \\ \hline
+			0qwe1rty2asdf6   & 0  1  2  6 \\ \hline
+			аворп+-+45оаавыgfgdfd+*56 & 45  56 \\ \hline
+			
+		\end{tabularx}
+		\caption{Таблица с результатами контрольных тестов Задания №2}
+	\end{table}
+	
+	
+	\section{Контрольные вопросы}
+	\subsection{Как найти нужный элемент в массиве?}
+	Ответ на этот вопрос зависит от того имеем ли мы дело с отсортированным или не отсортированным массивом. 
+	
+	В первом случае возможно применить, например:
+	
+	\begin{itemize}
+		\item Бинарный поиск ($O(\log n)$)- разделение массива пополам на каждом шаге и выбор нужной половины для дальнейшего поиска
+		\item Интерполяционный поиск ($O(\log\log n)$) - вариация бинарного поиска, где вместо деления пополам используется предположение о положении элемента на основе равномерного распределения значений, но в худшем случае также ($O(\log n)$).	 
+	\end{itemize}
+	
+	Если массив не отсортирован:
+	
+	\begin{itemize}
+		\item Линейный поиск ($O(n)$)- последовательная проверка каждого элемента массива от начала до конца до нахождения искомого элемента или конца массива.
+	\end{itemize}
+
+	
+	\subsection{Поиск эффективнее происходит в упорядоченном или произвольном массиве?}
+	
+	Более эффективен в упорядоченном массиве - $O(\log n)$  против $O(n)$
+	
+	\subsection{Как поменять местами два элемента массива?}
+	
+	Поменять местами два элемента массива, нужно временно сохранить значение одного из них во временную переменную (того же типа что и элемент массива), затем присвоить другому элементу его значение, а после этого вернуть сохраненное значение первому элементу.
+	
+	Возможно также применить побитовую операцию XOR для двух элементов массива, например так:
+	\begin{lstlisting}
+		x[a] ^= x[b];
+		x[b] ^= x;
+		x[a] ^= x[b];
+	\end{lstlisting}
+	в этом случае временная переменная не потребуется, но код становится не наглядным и лучше применять там где это действительно нужно.
+	
+	\subsection{Как создать одномерный динамический массив?}
+	
+	Общая схема заключается в выделении в динамической памяти, некоторой области памяти, увеличения или изменения этой области (если потребуется) и освобождения области.
+	
+	В различных языка программирования это происходит по разному, явно и неявно.
+	
+	Пример явной работы с динамической памятью
+	\begin{lstlisting} [language=C, title=Пример C]
+ 	int *mas = (int*)malloc(sizeof(int) * n);  // Создание массива из n элементов типа int
+	...
+	mas = (int*)realloc(mas, sizeof(int) * m); // Изменение размера массива с n на m с сохранением содержимого
+	...
+	free(mas); // Освобождение памяти после использования массива
+	\end{lstlisting}
+	
+	И пример не явной работы:
+	
+	\begin{lstlisting} [language=C++, title=Пример C++]
+		
+	// Объявляем массив mas, изначально содержащий числа 1 - 5
+	std::vector<int> mas = {1, 2, 3, 4, 5};
+		
+	mas.reserve(100);     // Зарезервировать место для хранения не менее 100 элементов, не изменяя фактический размер. Содержимое остаётся прежним.
+	
+	mas.resize(50);       // Задать явный размер - ровно 50 элементов. Недостающие элементы получат значение "по умолчанию", лишние элементы будут удалены.
+
+	\end{lstlisting}
+	
+	и ещё более не явно:
+	
+	\begin{lstlisting} [language=Python, title=Пример Python]
+	 
+	dynamic_list = []
+	
+	# Добавление элементов в список
+	for i in range(1, 11):
+	dynamic_list.append(i)
+	
+	# Расширяем список
+	for i in range(11, 21):
+	dynamic_list.append(i)
+	
+
+	\end{lstlisting}
+	
+	\subsection{Как выделить память под одномерный динамический массив?}
+	
+	В языке C вызвать функцию malloc(), calloc() или realloc():
+	
+	\begin{lstlisting} [language=C]
+		int *mas = (int*)malloc(sizeof(int) * n);
+	\end{lstlisting}
+	
+	В языке C++ вызвать функцию malloc() и т.д., new() или вызвать конструктор типа vector:
+	
+	\begin{lstlisting} [language=C]
+		int *mas1= (int*)malloc(sizeof(int) * n);
+		int *mas2= new int [n]; 
+		std::vector<int> mas3= {1, 2, 3, 4, 5};
+	\end{lstlisting}
+	
+	Более высокоуровневые конструкции скрывают фактическую реализацию и можно сказать что так или иначе вызывается malloc() (более точно ёще более низкоуровневая функция)
+	 
+	
+	\subsection{Как определить размер динамического массива в текущий момент времени?}
+	
+	Сделать это строго говоря не возможно, так указатель на динамический массив указывает только на первый элемент. В связи с чем необходимо хранить размер массива в отдельной переменной.
+	
+	В языке C это необходимо делать явно. В таких языках как C++, Python типы которые являются динамическими массивами: vector, list, позволяют вызвать метод который возвращает размер массива. 
+	
+	\subsection{Какими способами можно освободить всю память, занимаемую динамическими массивами?}
+	
+	В C это делается вызовом функции \textbf{free()} для освобождения памяти выделенной \textbf{malloc}, \textbf{calloc} или \textbf{realoc}.
+	
+	В C++ для этого служит оператор \textbf{delete[]}, который в отличии от \textbf{delete} освобождает память выделенную под массив. Лучше использовать более безопасные типы вроде \textbf{vector}.
+	
+	В общем смысле все функции и операторы вызывают, функции ядра операционной системы которое уже занимается реализации хранения данных в динамической памяти используя различные структуры данных для хранения информации о выделении и освобождении областей памяти. 
+	
+	
+	
+\end{document}

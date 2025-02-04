@@ -1,0 +1,371 @@
+\documentclass[a4paper,12pt]{article}
+
+% Подключение необходимых пакетов
+\usepackage[left=30mm,right=10mm,top=2cm,bottom=2cm]{geometry} % Поля 
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{mathtext}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{graphicx}
+\usepackage{tabularx} % Пакет для таблиц с автоматической шириной столбцов
+
+\usepackage{setspace} % Межстрочные интервалы
+\usepackage{indentfirst} % Отступ у первого абзаца
+\usepackage{titlesec} % Настройка заголовков
+\usepackage{csquotes} % Для цитат
+\usepackage{hyperref} % Для гиперссылок
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xypic}
+\usepackage{tikz}
+
+\usepackage{listings}
+\lstset{inputencoding=utf8x, extendedchars=\true}
+
+% Define a custom color
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+
+% Define a custom style
+\lstdefinestyle{myStyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	keepspaces=true,                 
+	numbers=left,       
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2,
+	basicstyle=\footnotesize\ttfamily,
+	keywordstyle=\bfseries\color{green!40!black},
+	commentstyle=\itshape\color{purple!40!black},
+	identifierstyle=\color{blue},
+	backgroundcolor=\color{gray!10!white},
+}
+
+% Use \lstset to make myStyle the global default
+\lstset{style=myStyle}
+
+
+\usetikzlibrary{positioning}
+
+% Форматирование заголовков разделов
+\titleformat{\section}{\bfseries\fontsize{14pt}{14pt}\selectfont}{\thesection.}{1em}{}
+\titlespacing{\section}{0pt}{6pt}{6pt}
+
+% Настройка абзацев
+\setlength{\parindent}{1.25cm} % Абзацный отступ
+\setlength{\parskip}{6pt} % Интервал между абзацами
+
+% Оформление цитат
+\newenvironment{quoteformat}{\bfseries}{}
+
+\begin{document}
+	\begin{titlepage}
+		\begin{center}
+			% Шапка
+			{\large \textbf{Министерство науки и высшего образования \\ Российской Федерации}}
+			
+			{\large\textbf{Федеральное государственное автономное образовательное учреждение высшего образования}}
+			
+			{\large \textbf{«Южно-Уральский государственный университет (НИУ)»}}
+			
+			{\large \textbf{Высшая школа электроники и компьютерных наук}}
+			
+			{\large \textbf{Кафедра системного программирования}\\[2cm]
+			}
+			% Тип работы
+			\textbf{ОТЧЕТ}\\[0.2cm]
+			о выполнении практического задания №2\\[0.2cm]
+			по дисциплине\\[0.2cm]
+			«Структуры и алгоритмы обработки данных»\\[0.2cm]
+			\textbf{Вариант 5}\\[3cm]
+		\end{center}
+		
+		\begin{flushright}
+			Проверил:\\[0.2cm]
+			ст. преподаватель кафедры СП\\[0.2cm]
+			\textbf{Петрова Л.Н.}\\[1cm]
+						
+			Выполнил:\\[0.2cm]
+			Студент группы КЭз-391\\[0.2cm]
+			\textbf{Галиулин Р.Р.}\\[0.2cm]
+			
+		\end{flushright}
+		\vfill{}
+		
+		\begin{center}
+			Челябинск \\ 2025
+		\end{center}
+	\end{titlepage}
+	\newpage
+	
+	\tableofcontents
+	
+	\setcounter{page}{2}
+	\newpage
+	%\maketitle
+	\section{Описание задачи}
+	\textbf{Задание №1: Односвязанный список}
+	
+	Информационная запись о файле содержит следующие поля: каталог, имя файла, 
+	расширение, дата и время создания, атрибуты «только для чтения», «скрытый», 
+	«системный», количество выделенных секторов (размер сектора принять равным 512 
+	байтам). Поиск и сортировка — по каталогу, дате создания файла. 
+	Выяснить, поместится ли файл на носитель с некоторым количеством секторов.
+	
+	\textbf{Входные данные:}
+	
+	\begin{itemize}
+		\item Размер носителя - целое положительное число больше нуля
+		\item Параметр поиска - буква латинского алфавита: \textbf{с} или \textbf{d}
+		\item Каталог для поиска - строка
+		\item Дата создания для поиска - строка в формате DD.MM.YYYY, где DD - день, MM -месяц, YYYY - год 
+	\end{itemize}
+	\textit{Все данные вводятся с помощью стандартного потока вывода.}	
+
+	\textbf{Выходные данные:}
+	
+	\begin{itemize}
+		\item Список файлов, содержащий сведения о файлах с данными указанными в задании. Выводится вначале, после сортировок и поиска. Формат буквенно-числовой. 
+	\end{itemize}
+	
+	\textit{Все данные выводятся с помощью стандартного потока вывода.}	
+		
+	\textbf{Задание №2: Стек}
+	
+	Сформировать стек из N чисел. Извлечь элементы из стека, найти их сумму и произведение. Результат поместить в стек.
+	
+	\textbf{Входные данные:}
+	
+	\begin{itemize}
+		\item Размер стека (кол-во элементов) - целое положительное число больше нуля
+		\item Элементы стека - целые числа
+	\end{itemize}
+	
+	\textit{Все данные вводятся с помощью стандартного потока вывода.}		
+	
+	\textbf{Выходные данные:}
+	
+	\begin{itemize}
+		\item Начальный стек, список элементов стека - целых чисел
+		\item Сумма числе элементов стека, целое число
+		\item Произведение числе элементов стека, целое число
+		\item Конечный стек, содержащие элементы начального стека, также сумму и произведение в качестве элементов - целые числа
+	\end{itemize}
+	
+	
+	\textit{Все данные выводятся с помощью стандартного потока вывода.}	
+	
+	\newpage
+	\section{Листинги программ}
+	Язык программирования: C++ 14. Среда разработки: Ubuntu 24.10, gcc 14.2.0, nvim
+	
+	При реализации задачи намерено, в учебных целях, не использованы контейнеры стандартной библиотеки \textbf{forward\_list} и его методы 
+	\lstinputlisting[caption=Задание 1: Односвязанный список,label={lst:listing-cpp}, language=C++, firstline=1]{app3.cpp}
+	
+	
+	\lstinputlisting[caption=Задание 2: Стек,label={lst:listing-cpp}, language=C++]{app4.cpp}
+	
+	\newpage	
+	\section{Контрольные тесты}
+	
+	\textbf{Задание №1: Односвязанный список}
+	
+	\textit{\textbf{Пример работы}}
+	
+Файлы до сортировки:
+DIR: /home/user/docs, NAME: file1, EXT: .txt, C\_DATE: 10.01.2023, C\_TIME: 12:00, R: 1, H: 0, S: 0, SIZE(512б): 50 \newline
+...
+\newline
+DIR: /home/user/videos, NAME: video1, EXT: .mp4, C\_DATE: 01.01.2023, C\_TIME: 09:00, R: 1, H: 1, S: 0, SIZE(512б): 300
+\newline
+Файлы после сортировки по каталогу: \newline
+DIR: /home/user/docs, NAME: file2, EXT: .docx, C\_DATE: 09.01.2023, C\_TIME: 10:00, R: 0, H: 1, S: 0, SIZE(512б): 150
+\newline
+...
+\newline
+DIR: /home/user/videos, NAME: video1, EXT: .mp4, C\_DATE: 01.01.2023, C\_TIME: 09:00, R: 1, H: 1, S: 0, SIZE(512б): 300
+\newline
+Файлы после сортировки по дате создания: \newline
+DIR: /home/user/music, NAME: song1, EXT: .mp3, C\_DATE: 05.01.2022, C\_TIME: 18:30, R: 0, H: 0, S: 1, SIZE(512б): 200
+\newline
+...
+\newline
+DIR: /home/user/docs, NAME: file1, EXT: .txt, C\_DATE: 10.01.2023, C\_TIME: 12:00, R: 1, H: 0, S: 0, SIZE(512б): 50
+\newline
+Введите размер носителя в секторах (512 байт): \textbf{150} \newline
+Каталог: /home/user/music, Имя файла: song1, Размер в секторах (512б): 200 - Не поместится на носитель
+\newline
+...
+\newline
+Каталог: /home/user/docs, Имя файла: file1, Размер в секторах (512б): 50 - Поместится на носитель
+\newline
+По какому параметру искать файлы? (d - по каталогу, c - по дате создания): \textbf{c} \newline
+Введите дату создания для поиска (формат DD.MM.YYYY): \textbf{09.01.2023} \newline
+DIR: /home/user/docs, NAME: file2, EXT: .docx, C\_DATE: 09.01.2023, C\_TIME: 10:00, R: 0, H: 1, S: 0, SIZE(512б): 150 \newline
+
+	
+	\renewcommand{\arraystretch}{1.5} % Увеличиваем высоту строк
+	\subsection{Задание №2: Строка}
+	\begin{table}[ht]
+		
+		\centering
+		\begin{tabularx}{\textwidth}{|X|X|}
+			\hline
+			\textbf{Исходные данные} & \textbf{Результат} \\ \hline
+			5 \newline 1 2 3 4 5 & 
+			Начальный стек: 5 4 3 2 1 \newline
+			Сумма: 15 \newline
+			Произведение: 120 \newline
+			Конечный стек: 120 15 5 4 3 2 1 \newline
+			\\ \hline
+			3 \newline 2 3 4  &
+			Начальный стек: 4 3 2 \newline
+			Сумма: 9 \newline
+			Произведение: 24 \newline
+			Конечный стек: 24 9 5 4 3 2 1 \newline
+			\\ \hline
+			
+		\end{tabularx}
+		\caption{Таблица с результатами контрольных тестов Задания №2}
+	\end{table}
+	
+	
+	\section{Контрольные вопросы}
+	\subsection{Что такое ссылка?}
+	
+	Ссылка — это особый тип переменной, которая, аналогично указателю, указывает на область памяти. Однако, в отличие от указателя, ссылка должна быть инициализирована в месте объявления, не может быть переназначена на другой объект и не может ссылаться на неопределённую или несуществующую область памяти.
+	Безопаснее чем указатель и позволяет также эффективно передавать переменные или структуры данных например в вызов функции. 
+	
+	\subsection{Линейный (односвязный) список — что это?}
+	
+	Односвязный список — это динамическая структура данных, представляющая собой последовательность, каждый элемент которой содержит данные и ссылку (или указатель) на следующий элемент (кроме последнего, который указывает на nullptr). Такая структура позволяет эффективно добавлять или удалять элементы, но имеет низкую эффективность при частом доступе к произвольным элементам, так как для этого требуется последовательный перебор от начала списка.
+	
+	\subsection{Какие операции можно выполнять с односвязным списком?}
+	
+	С односвязным списком возможно выполнять следующие операции:  
+	
+	\begin{itemize}
+		\item \textbf{Добавление элементов}  
+		\begin{itemize}
+			\item В начало или конец последовательности (без изменения указателей других элементов).  
+			\item Вставка в середину списка требует изменения указателя предыдущего элемента.  
+		\end{itemize}
+		
+		\item \textbf{Удаление элементов}  
+		\begin{itemize}
+			\item Удаление первого элемента выполняется путём обновления головы списка.  
+			\item Удаление последнего элемента требует обхода списка до предпоследнего узла.  
+			\item Удаление элемента из середины требует изменения указателя предыдущего узла.  
+		\end{itemize}
+		
+		\item \textbf{Обращение всего списка}  
+		\begin{itemize}
+			\item Меняется направление указателей в каждом узле так, чтобы каждый элемент указывал на предыдущий, а первый элемент становился последним.  
+		\end{itemize}
+		
+		\item \textbf{Обход списка}  
+		\begin{itemize}
+			\item Проход по всем узлам для выполнения операций, таких как поиск, изменение или обработка элементов.  
+		\end{itemize}
+	\end{itemize}
+
+	
+	\subsection{Понятие стека. Операции, выполняемые над стеком.}
+	
+	Стек это структура данных реализующая прицип LIFO (последним пришел, первым вышел).
+	
+	Основными операциями являются:
+	
+	\begin{itemize}
+		\item \textbf{Push} - добавление элемента "сверху"
+		\item \textbf{Pop} - извлечение элемента "сверху"
+	\end{itemize}
+	
+	Также существуют, но не во всех реализациях, дополнительные операции:
+	
+	\begin{itemize}
+		\item \textbf{Top} (или Peek) - просмотр элемента без извлечения
+		\item Проверка на пустоту, наличия хотя-бы одного элемента.
+		\item \textbf{Size} - размер стека
+	\end{itemize}
+	
+	
+	\subsection{Представление стека с помощью массива. Выполнение основных операций.}
+	
+	Логичнее всего реализовать на основе динамического массива и работать с нём только через функции реализующие на ним операции указанные в пункте выше.
+	
+	\begin{lstlisting} [language=C]
+		class Stack {
+			private:
+			int* array;  
+			int top;
+			int capacity;
+			
+			void resize() {
+				capacity *= 2;
+				int* new_array = new int[capacity];
+				for (int i = 0; i < top; ++i) {
+					new_array[i] = array[i];
+				}
+				delete[] arr;
+				arr = new_array;
+			}
+			
+			public:
+			Stack() {
+				capacity = 10;
+				array = new int[capacity];
+				top = 0;
+			}
+			
+			~Stack() {
+				delete[] array;
+			}
+			
+
+			void push(int value) {
+				if (top == capacity) {
+					resize();
+				}
+				array[top++] = value;
+			}
+		
+			int pop() {
+				if (top == 0) {
+					std::cout << "Стек пуст!" << std::endl;
+					return -1;
+				}
+				return array[--top];
+			}
+			
+			int peek() {
+				if (top == 0) {
+					std::cout << "Стек пуст!" << std::endl;
+					return -1;
+				}
+				return array[top - 1];
+			}
+			
+
+			bool isEmpty() {
+				return top == 0;
+			}
+			
+			int size() {
+				return top;
+			}
+		};
+		
+	\end{lstlisting}
+	 
+	
+	
+	
+\end{document}
